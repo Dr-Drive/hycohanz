@@ -61,11 +61,14 @@ from hycohanz.boundarysetup import (assign_perfect_e,
                                     assign_waveport_multimode,
 									assign_finite_conductor)
                                     
-from hycohanz.fieldscalculator import (enter_line,
-                                       enter_vol, 
-                                       calc_op, 
-                                       clc_eval, 
-                                       enter_qty, 
+from hycohanz.fieldscalculator import (calc_op, 
+                                       clc_eval,
+                                       copy_named_expr_to_stack,	   
+                                       enter_line,
+                                       enter_qty,
+                                       enter_scalar_func,
+                                       enter_surf,
+                                       enter_vol,		   
                                        get_top_entry_value)
 
 class App():

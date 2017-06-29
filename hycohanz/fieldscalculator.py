@@ -30,8 +30,6 @@ def calc_op(oFieldsReporter, OperationString):
     """
     oFieldsReporter.CalcOp(OperationString)
     
-
-
 def clc_eval(oFieldsReporter, setupname, sweepname, freq, phase, variablesdict):
     """
     Evaluates the expression at the top of the Fields Calculator stack using 
@@ -69,7 +67,26 @@ def clc_eval(oFieldsReporter, setupname, sweepname, freq, phase, variablesdict):
     print('variablesarray: ' + str(variablesarray))
     
     oFieldsReporter.ClcEval(solutionname, variablesarray)
-    
+  
+def copy_named_expr_to_stack(oFieldsReporter, NamedExprString):
+    """
+    Loads named expression to top of the stack
+    the provided solution name and variable values.
+
+    Parameters
+    ----------
+    oFieldsReporter : pywin32 COMObject
+        An HFSS "FieldsReporter" module 
+    OperationString : str
+        The text on the corresponding named expression.
+        
+    Returns
+    -------
+    None
+    """
+    oFieldsReporter.CopyNamedExprToStack(NamedExprString)
+ 
+ 
 def enter_line(oFieldsReporter, LineName):
     """
     Enters a line defined in the 3D Modeler editor into the Fields Calculator.
@@ -86,8 +103,6 @@ def enter_line(oFieldsReporter, LineName):
     None
     """
     oFieldsReporter.EnterLine(LineName)
-
-
     
 def enter_qty(oFieldsReporter, FieldQuantityString):
     """
@@ -106,8 +121,23 @@ def enter_qty(oFieldsReporter, FieldQuantityString):
     """
     return oFieldsReporter.EnterQty(FieldQuantityString)
 
-    
+def enter_scalar_func(oFieldsReporter, VolumeFuncName):
+    """
+    Enters a volume defined in the 3D Modeler editor into the Fields Calculator.
 
+    Parameters
+    ----------
+    oFieldsReporter : pywin32 COMObject
+        An HFSS "FieldsReporter" module
+    FuncName : str
+        Name of a Scalar Function defined in the Fields Calculator.
+
+    Returns
+    -------
+    None
+    """
+    oFieldsReporter.EnterScalarFunc(FuncName)        
+	
 def enter_vol(oFieldsReporter, VolumeName):
     """
     Enters a volume defined in the 3D Modeler editor into the Fields Calculator.
@@ -124,7 +154,24 @@ def enter_vol(oFieldsReporter, VolumeName):
     None
     """
     oFieldsReporter.EnterVol(VolumeName)        
-    
+
+def enter_surf(oFieldsReporter, SurfaceName):
+    """
+    Enters a surface defined in the 3D Modeler editor into the Fields Calculator.
+
+    Parameters
+    ----------
+    oFieldsReporter : pywin32 COMObject
+        An HFSS "FieldsReporter" module
+    VolumeName : str
+        Name of a surface defined in the 3D Modeler editor.
+
+    Returns
+    -------
+    None
+    """
+    oFieldsReporter.EnterSurf(SurfaceName)  
+	
 def get_top_entry_value(oModule, setupname, sweepname, freq, phase, variablesdict):
     """
     Evaluates the expression at the top of the stack using the provided 
